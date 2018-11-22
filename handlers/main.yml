@@ -1,0 +1,7 @@
+# vim: set ft=yaml ts=2:
+---
+
+- name: reload kibana
+  service:
+    name: kibana
+    state: restarted

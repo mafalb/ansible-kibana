@@ -1,0 +1,28 @@
+# vim: set ft=yaml ts=2:
+---
+
+- name: assertions
+  assert:
+    that:
+      - ansible_distribution == 'CentOS'
+      - ansible_distribution_major_version|int == 7
+
+- name: gpg key does exist
+  copy:
+    src: RPM-GPG-KEY-elasticsearch
+    dest: /etc/pki/rpm-gpg/
+
+- name: repo config does exist
+  copy:
+    src: elasticsearch.repo
+    dest: /etc/yum.repos.d/
+
+- name: kibana is present
+  package:
+    name: kibana
+    state: present
+
+- name: kibana is started
+  service:
+    name: kibana
+    state: started
