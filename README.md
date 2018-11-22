@@ -5,6 +5,5 @@
 ```
 - hosts: localhost
   roles:
-      - role: java/openjdk
-      - role: elasticsearch
+      - role: kibana
 ```
