@@ -12,6 +12,13 @@
     name: kibana
     state: present
 
+- name: kibana is configured
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    backup: true
+
+  notify: reload kibana
 - name: kibana is started
   service:
     name: kibana
